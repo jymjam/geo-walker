@@ -1,0 +1,39 @@
+<app-nav-header [navTitle]="title"></app-nav-header>\
+
+<ion-content >
+  <h3 class="activity">My Actvities</h3>
+  <table class="activity_table">
+    <thead>
+      <tr>
+        <th>Trip</th>
+        <th>Date</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of geoData; let i = index">
+        <td
+          [routerLink]='["/activity", geoData[i].id]'
+          style="cursor: pointer;"
+        >
+          {{geoData[i].id + 1}}
+        </td>
+        <td
+          [routerLink]='["/activity", geoData[i].id]'
+          style="cursor: pointer;"
+        >
+          {{geoData[i].date}}
+        </td>
+        <td 
+          [routerLink]='["/activity", geoData[i].id]'
+          style="cursor: pointer;"
+        >
+          {{ geoData[i].comments}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ion-button class="activity" (click)="newActivity()">New Activity</ion-button>
+  <app-activity-modal (close)="openModal=$event"  *ngIf="openModal"></app-activity-modal>
+</ion-content>
